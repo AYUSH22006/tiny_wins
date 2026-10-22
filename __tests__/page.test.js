@@ -162,4 +162,45 @@ describe('Tiny Wins UI - Page Unit Tests', () => {
       expect(textarea.value).toBe('');
     });
   });
+
+  it('allows deleting a celebration and removes it from the list', async () => {
+    const existingWins = [
+      {
+        id: 42,
+        content: 'Finished reading a book chapter.',
+        created_at: '2026-10-22T09:00:00.000Z',
+      },
+    ];
+
+    const mockEq = jest.fn().mockResolvedValue({ error: null });
+    const mockDelete = jest.fn().mockReturnValue({ eq: mockEq });
+
+    supabase.from.mockImplementation((table) => {
+      if (table === 'wins') {
+        return {
+          select: jest.fn().mockReturnValue({
+            order: jest.fn().mockResolvedValue({ data: existingWins, error: null }),
+          }),
+          delete: mockDelete,
+        };
+      }
+    });
+
+    render(<Home />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Finished reading a book chapter.')).toBeInTheDocument();
+    });
+
+    const deleteBtn = screen.getByRole('button', { name: /delete win/i });
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      expect(mockDelete).toHaveBeenCalled();
+      expect(mockEq).toHaveBeenCalledWith('id', 42);
+      expect(
+        screen.queryByText('Finished reading a book chapter.')
+      ).not.toBeInTheDocument();
+    });
+  });
 });

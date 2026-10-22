@@ -1,5 +1,5 @@
 -- 1. Create table
-CREATE TABLE wins (
+CREATE TABLE if not exists wins (
   id SERIAL PRIMARY KEY,
   content TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
@@ -17,3 +17,8 @@ USING (true);
 CREATE POLICY "Anyone can post a win" 
 ON wins FOR INSERT 
 WITH CHECK (true);
+
+-- 5. Allow anonymous deletes
+CREATE POLICY "Anyone can delete a win" 
+ON wins FOR DELETE 
+USING (true);

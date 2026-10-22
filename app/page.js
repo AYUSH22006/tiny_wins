@@ -9,6 +9,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
+  const [deletingId, setDeletingId] = useState(null);
 
   const MAX_CHARACTERS = 150;
 
@@ -78,6 +79,26 @@ export default function Home() {
       setErrorMessage('Failed to post your win. Please try again.');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  // Handle win deletion
+  const handleDelete = async (id) => {
+    setDeletingId(id);
+    try {
+      const { error } = await supabase
+        .from('wins')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setWins((prev) => prev.filter((win) => win.id !== id));
+    } catch (err) {
+      console.error('Error deleting win:', err.message);
+      setErrorMessage('Failed to delete win. Ensure Supabase allows DELETE operations.');
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -245,9 +266,38 @@ export default function Home() {
                   </p>
                   <div className="flex items-center justify-between text-xs text-stone-400 pt-2 border-t border-stone-100">
                     <time dateTime={win.created_at}>{formatDate(win.created_at)}</time>
-                    <span className="text-stone-300 group-hover:text-amber-400 transition-colors">
-                      ✨
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(win.id)}
+                        disabled={deletingId === win.id}
+                        aria-label="Delete win"
+                        title="Delete celebration"
+                        className="text-stone-300 hover:text-rose-500 disabled:opacity-40 transition-colors p-1 rounded-md hover:bg-rose-50 cursor-pointer"
+                      >
+                        {deletingId === win.id ? (
+                          <span className="text-[10px] animate-pulse">Deleting...</span>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-3.5 w-3.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                            />
+                          </svg>
+                        )}
+                      </button>
+                      <span className="text-stone-300 group-hover:text-amber-400 transition-colors">
+                        ✨
+                      </span>
+                    </div>
                   </div>
                 </article>
               ))}
