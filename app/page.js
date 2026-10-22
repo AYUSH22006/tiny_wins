@@ -65,14 +65,12 @@ export default function Home() {
 
       if (error) throw error;
 
-      // Optimistically update the list if data is returned, or refresh feed
       if (data && data.length > 0) {
         setWins((prev) => [data[0], ...prev]);
       } else {
         await fetchWins();
       }
 
-      // Reset form input
       setContent('');
     } catch (err) {
       console.error('Error saving win:', err.message);
@@ -116,33 +114,43 @@ export default function Home() {
   const remainingChars = MAX_CHARACTERS - content.length;
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-stone-800 antialiased">
-      {/* Background soft ambiance */}
+    <div className="min-h-screen bg-[#FAF8F5] text-stone-800 antialiased relative selection:bg-amber-200 selection:text-amber-900 overflow-x-hidden">
+      {/* Aesthetic Ambient Aurora & Grid Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-amber-100/40 blur-[100px] rounded-full" />
+        {/* Soft pastel mesh glows */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] h-[450px] bg-gradient-to-tr from-amber-200/40 via-rose-200/30 to-violet-200/25 blur-[130px] rounded-full" />
+        <div className="absolute top-1/3 -left-48 w-[500px] h-[500px] bg-gradient-to-br from-amber-100/40 via-orange-100/30 to-transparent blur-[120px] rounded-full" />
+        <div className="absolute bottom-10 -right-32 w-[550px] h-[450px] bg-gradient-to-tl from-rose-100/40 via-amber-100/35 to-indigo-50/20 blur-[130px] rounded-full" />
+        {/* Subtle textured dotted grid */}
+        <div className="absolute inset-0 bg-grid-dots opacity-40" />
       </div>
 
-      <main className="relative max-w-3xl mx-auto px-4 py-12 sm:py-16">
-        {/* Header */}
-        <header className="text-center mb-10 space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-100/80 text-amber-800 border border-amber-200/60 shadow-xs">
-            <span>✨</span>
-            <span>Daily Gratitude & Progress</span>
+      <main className="relative max-w-3xl mx-auto px-4 py-14 sm:py-20">
+        {/* Aesthetic Header */}
+        <header className="text-center mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/80 text-amber-800 border border-amber-200/70 shadow-xs backdrop-blur-md">
+            <span className="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+            <span className="tracking-wide">✨ Daily Gratitude Garden</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-stone-900">
+
+          <h1 className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-stone-900">
             Tiny Wins
           </h1>
-          <p className="text-stone-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+
+          <p className="text-stone-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed font-light">
             A quiet space to celebrate everyday victories. No victory is too small to count.
           </p>
         </header>
 
-        {/* Submission Form Card */}
-        <section className="bg-white/90 backdrop-blur-xs rounded-2xl border border-stone-200/80 shadow-sm hover:shadow-md transition-shadow duration-200 p-5 sm:p-6 mb-12">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="win-input" className="sr-only">
-                Your tiny win
+        {/* Themed Writing Box: Where the tiny win is written */}
+        <section className="bg-white/85 backdrop-blur-xl rounded-3xl border border-white/90 shadow-[0_12px_36px_rgba(120,53,15,0.06)] hover:shadow-[0_16px_44px_rgba(120,53,15,0.09)] transition-all duration-300 p-6 sm:p-7 mb-14 relative overflow-hidden ring-1 ring-stone-900/5">
+          {/* Top aesthetic gradient shimmer bar */}
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-amber-400 via-rose-300 to-amber-500" />
+
+          <form onSubmit={handleSubmit} className="space-y-4 pt-1">
+            <div className="space-y-1.5">
+              <label htmlFor="win-input" className="block text-xs font-semibold text-stone-500 uppercase tracking-wider pl-1">
+                Share a win for today
               </label>
               <textarea
                 id="win-input"
@@ -155,13 +163,13 @@ export default function Home() {
                   if (errorMessage) setErrorMessage('');
                 }}
                 placeholder="What's your tiny win today? (e.g., 'Finally fixed that bug', 'Drank enough water', 'Took a 15-min walk')"
-                className="w-full resize-none rounded-xl border border-stone-200 p-3.5 text-stone-800 text-sm sm:text-base placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-400/80 focus:border-amber-400 transition disabled:bg-stone-50 disabled:cursor-not-allowed"
+                className="w-full resize-none rounded-2xl border border-stone-200/90 bg-[#FAF9F6]/80 p-4 text-stone-800 text-sm sm:text-base placeholder-stone-400 focus:outline-none focus:bg-white focus:ring-4 focus:ring-amber-400/15 focus:border-amber-400 transition-all duration-200 disabled:bg-stone-50 disabled:cursor-not-allowed shadow-inner"
               />
             </div>
 
-            {/* Error Message */}
+            {/* Error Message Alert */}
             {errorMessage && (
-              <div className="text-xs text-rose-700 bg-rose-50 border border-rose-200 rounded-lg p-2.5 flex items-center gap-2">
+              <div className="text-xs text-rose-700 bg-rose-50/90 border border-rose-200/90 rounded-xl p-3 flex items-center gap-2 backdrop-blur-xs">
                 <span>⚠️</span>
                 <span>{errorMessage}</span>
               </div>
@@ -184,7 +192,7 @@ export default function Home() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed text-white font-medium text-sm rounded-xl shadow-xs transition-all duration-150 transform active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-600 hover:from-amber-600 hover:to-amber-700 active:from-amber-700 active:to-amber-800 disabled:from-stone-200 disabled:to-stone-300 disabled:text-stone-400 disabled:cursor-not-allowed text-white font-medium text-sm rounded-xl shadow-md shadow-amber-500/20 hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-200 transform active:scale-95 cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
@@ -221,14 +229,18 @@ export default function Home() {
           </form>
         </section>
 
-        {/* Community Wins Feed */}
-        <section className="space-y-4">
-          <div className="flex items-center justify-between px-1">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-500">
-              Recent Celebrations
-            </h2>
+        {/* Celebrations Feed */}
+        <section className="space-y-5">
+          <div className="flex items-center justify-between px-1.5">
+            <div className="flex items-center gap-2">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-stone-500">
+                Recent Celebrations
+              </h2>
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+            </div>
+
             {!isLoading && (
-              <span className="text-xs text-stone-400">
+              <span className="text-xs font-medium text-stone-500 bg-white/70 px-2.5 py-0.5 rounded-full border border-stone-200/60 shadow-2xs">
                 {wins.length} {wins.length === 1 ? 'win' : 'wins'} shared
               </span>
             )}
@@ -236,47 +248,62 @@ export default function Home() {
 
           {/* Loading State */}
           {isLoading && (
-            <div className="text-center py-16 bg-white/60 rounded-2xl border border-stone-200/60">
-              <div className="inline-block animate-spin text-amber-500 mb-2">✨</div>
-              <p className="text-sm text-stone-500">Loading wins...</p>
+            <div className="text-center py-16 bg-white/70 backdrop-blur-md rounded-3xl border border-stone-200/70 shadow-xs">
+              <div className="inline-block animate-spin text-amber-500 text-xl mb-2">✨</div>
+              <p className="text-sm font-medium text-stone-500">Loading wins...</p>
             </div>
           )}
 
           {/* Empty State */}
           {!isLoading && wins.length === 0 && (
-            <div className="text-center py-16 px-4 bg-white/70 rounded-2xl border border-dashed border-stone-300 text-stone-500 space-y-2">
-              <span className="text-2xl">🌱</span>
-              <p className="text-sm font-medium text-stone-700">No wins posted yet!</p>
-              <p className="text-xs text-stone-400 max-w-xs mx-auto">
+            <div className="text-center py-16 px-4 bg-white/75 backdrop-blur-md rounded-3xl border border-dashed border-stone-300 text-stone-500 space-y-3">
+              <span className="text-3xl block">🌱</span>
+              <p className="text-sm font-semibold text-stone-800">No wins posted yet!</p>
+              <p className="text-xs text-stone-500 max-w-xs mx-auto leading-relaxed">
                 Be the first to share a tiny victory and bring a smile to someone today.
               </p>
             </div>
           )}
 
-          {/* Wins Responsive Grid */}
+          {/* Themed Win Cards Grid (Where wins are written & displayed) */}
           {!isLoading && wins.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {wins.map((win) => (
                 <article
                   key={win.id}
-                  className="bg-white rounded-2xl p-5 border border-stone-200/70 shadow-xs hover:shadow-md hover:border-amber-200/70 transition-all duration-200 flex flex-col justify-between group"
+                  className="bg-white/85 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-stone-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_rgba(217,119,6,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ring-1 ring-stone-900/[0.03]"
                 >
-                  <p className="text-stone-800 text-sm sm:text-base leading-relaxed break-words whitespace-pre-wrap mb-4">
+                  {/* Subtle decorative card pill */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-800/80 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/50">
+                      <span>🌱</span>
+                      <span>Tiny Win</span>
+                    </span>
+                  </div>
+
+                  {/* Written win text */}
+                  <p className="text-stone-800 text-[15px] sm:text-base leading-relaxed break-words whitespace-pre-wrap font-normal mb-5">
                     {win.content}
                   </p>
-                  <div className="flex items-center justify-between text-xs text-stone-400 pt-2 border-t border-stone-100">
-                    <time dateTime={win.created_at}>{formatDate(win.created_at)}</time>
+
+                  {/* Card Footer with date and actions */}
+                  <div className="flex items-center justify-between text-xs text-stone-400 pt-3 border-t border-stone-100">
+                    <div className="flex items-center gap-1.5 font-medium text-stone-400">
+                      <time dateTime={win.created_at}>{formatDate(win.created_at)}</time>
+                    </div>
+
                     <div className="flex items-center gap-2">
+                      {/* Delete option */}
                       <button
                         type="button"
                         onClick={() => handleDelete(win.id)}
                         disabled={deletingId === win.id}
                         aria-label="Delete win"
                         title="Delete celebration"
-                        className="text-stone-300 hover:text-rose-500 disabled:opacity-40 transition-colors p-1 rounded-md hover:bg-rose-50 cursor-pointer"
+                        className="text-stone-300 hover:text-rose-500 disabled:opacity-40 transition-colors p-1.5 rounded-lg hover:bg-rose-50 cursor-pointer"
                       >
                         {deletingId === win.id ? (
-                          <span className="text-[10px] animate-pulse">Deleting...</span>
+                          <span className="text-[10px] text-rose-500 font-medium animate-pulse">Deleting...</span>
                         ) : (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -294,7 +321,8 @@ export default function Home() {
                           </svg>
                         )}
                       </button>
-                      <span className="text-stone-300 group-hover:text-amber-400 transition-colors">
+
+                      <span className="text-stone-300 group-hover:text-amber-400 group-hover:scale-110 transition-all">
                         ✨
                       </span>
                     </div>
