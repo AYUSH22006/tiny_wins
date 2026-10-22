@@ -28,6 +28,10 @@ describe('Tiny Wins UI - Page Unit Tests', () => {
     expect(
       screen.getByText(/a quiet space to celebrate everyday victories/i)
     ).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.queryByText(/loading wins/i)).not.toBeInTheDocument();
+    });
   });
 
   it('displays the 150-character limit counter and "Celebrate!" button', async () => {
@@ -41,19 +45,30 @@ describe('Tiny Wins UI - Page Unit Tests', () => {
 
     expect(screen.getByText('150 characters left')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /celebrate!/i })).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.queryByText(/loading wins/i)).not.toBeInTheDocument();
+    });
   });
 
   it('prevents submission and displays an error when submitting empty or whitespace text', async () => {
-    const mockOrder = jest.fn().mockResolvedValue({ data: [], error: null });
-    const mockSelect = jest.fn().mockReturnValue({ order: mockOrder });
-    supabase.from.mockReturnValue({ select: mockSelect });
+    supabase.from.mockReturnValue({
+      select: jest.fn().mockReturnValue({
+        order: jest.fn().mockResolvedValue({ data: [], error: null }),
+      }),
+    });
 
     render(<Home />);
+
+    // Wait for initial fetch to finish
+    await waitFor(() => {
+      expect(screen.queryByText(/loading wins/i)).not.toBeInTheDocument();
+    });
 
     const submitButton = screen.getByRole('button', { name: /celebrate!/i });
     const textarea = screen.getByPlaceholderText(/what's your tiny win today\?/i);
 
-    // Type spaces
+    // Type whitespace
     fireEvent.change(textarea, { target: { value: '   ' } });
     fireEvent.click(submitButton);
 
@@ -124,6 +139,10 @@ describe('Tiny Wins UI - Page Unit Tests', () => {
     });
 
     render(<Home />);
+
+    await waitFor(() => {
+      expect(screen.queryByText(/loading wins/i)).not.toBeInTheDocument();
+    });
 
     const textarea = screen.getByPlaceholderText(/what's your tiny win today\?/i);
     const submitButton = screen.getByRole('button', { name: /celebrate!/i });

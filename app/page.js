@@ -162,7 +162,7 @@ export default function Home() {
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={isSubmitting || !content.trim()}
+                disabled={isSubmitting}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed text-white font-medium text-sm rounded-xl shadow-xs transition-all duration-150 transform active:scale-95"
               >
                 {isSubmitting ? (
