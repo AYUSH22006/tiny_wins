@@ -116,104 +116,82 @@ export default function Home() {
   const remainingChars = MAX_CHARACTERS - content.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#FFF8F1] to-[#F7F1E8] text-[#303B34] font-inter relative flex flex-col justify-between selection:bg-[#DDE8D7] selection:text-[#303B34] overflow-x-hidden">
+    <div className="v3_1593">
       {/* Background Watercolor Art Illustration from ui/images/v10_4.png */}
-      <div
-        className="fixed inset-0 pointer-events-none bg-watercolor-art z-0"
-        aria-hidden="true"
-      />
+      <div className="v10_4" aria-hidden="true" />
 
-      {/* Decorative Whimsical Floating Botanical Doodles */}
-      <div className="fixed top-24 right-10 pointer-events-none hidden lg:block opacity-75 z-0" aria-hidden="true">
-        {/* Flower / sun doodle (v17_8) */}
-        <div className="relative w-8 h-8">
-          <div className="w-6 h-6 bg-[#F4D8C7] rounded-full absolute top-1 left-1" />
-          <div className="w-3 h-3 bg-[#FFFEFA] rounded-full absolute top-2 left-2.5" />
-          <div className="w-1.5 h-1.5 bg-[#47634B] rounded-full absolute top-2.5 left-3" />
+      {/* Top Header Bar matching ui/index.html (.v3_1594) */}
+      <header className="v3_1594">
+        {/* Brand Logo (.v3_1595) */}
+        <div className="v3_1595">
+          <div className="v3_1596">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="rgba(71,99,75,1)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 22v-9" />
+              <path d="M12 13a5 5 0 0 1 5-5c0 0 .5 3-2 5a5.5 5.5 0 0 1-3 0Z" />
+              <path d="M12 15a5 5 0 0 0-5-4c0 0-.5 3 2 4.5a5.5 5.5 0 0 0 3-.5Z" />
+            </svg>
+          </div>
+          <h1 className="v3_1597">Tiny Wins</h1>
         </div>
-      </div>
-      <div className="fixed bottom-36 left-8 pointer-events-none hidden lg:block opacity-75 z-0" aria-hidden="true">
-        {/* Star / sparkle doodle (v17_13) */}
-        <div className="w-6 h-6 border-[1.7px] border-[#47634B] rounded-sm transform -rotate-12 flex items-center justify-center">
-          <div className="w-2 h-2 bg-[#DDE8D7] rounded-full" />
-        </div>
-      </div>
 
-      {/* Top Header Bar matching ui/index.html & ui/css/main.css (.v3_1594) */}
-      <header className="sticky top-0 z-30 w-full backdrop-blur-md bg-[#FFFDF9]/85 border-b border-[#47634B]/10 shadow-[0_2px_12px_rgba(71,99,75,0.03)]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
-          {/* Logo & Brand */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border-[1.7px] border-[#47634B] bg-[#FFFDF9] flex items-center justify-center shadow-2xs group hover:scale-105 transition-transform">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#47634B"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="transform group-hover:rotate-12 transition-transform"
-              >
-                <path d="M12 22v-9" />
-                <path d="M12 13a5 5 0 0 1 5-5c0 0 .5 3-2 5a5.5 5.5 0 0 1-3 0Z" />
-                <path d="M12 15a5 5 0 0 0-5-4c0 0-.5 3 2 4.5a5.5 5.5 0 0 0 3-.5Z" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-nunito font-black text-2xl sm:text-3xl text-[#303B34] tracking-tight leading-none">
-                Tiny Wins
-              </span>
-              <div className="hidden sm:flex items-center gap-1.5 mt-1">
-                <span className="w-2.5 h-2.5 border-[1.4px] border-[#47634B] rounded-full inline-block" />
-                <span className="text-xs font-nunito font-bold text-[#47634B]">
-                  A little space for good.
-                </span>
-              </div>
-            </div>
+        {/* Tagline (.v3_1603) */}
+        <div className="v3_1603">
+          <div className="v3_1743">
+            <div className="v3_1744" />
+          </div>
+          <span className="v3_1605">A little space for good.</span>
+        </div>
+
+        {/* Navigation Pills matching Figma (.v3_1598) */}
+        <nav aria-label="Main Navigation" className="v3_1598">
+          {/* Active Community board pill (.v3_1599) */}
+          <div className="v3_1599">
+            <div className="v3_1600" />
+            <span className="v3_1601">Community board</span>
           </div>
 
-          {/* Navigation Pills matching Figma (.v3_1598) */}
-          <nav aria-label="Main Navigation" className="flex items-center gap-2 sm:gap-3 bg-[#FFFDF9]/90 p-1.5 rounded-full border border-[#47634B]/15 shadow-2xs backdrop-blur-sm">
-            {/* Active Community board pill */}
-            <div className="flex items-center gap-2 bg-[#DDE8D7] text-[#47634B] px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full font-inter font-semibold text-xs sm:text-sm shadow-2xs transition-all">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#47634B] animate-pulse" />
-              <span>Community board</span>
-            </div>
-
-            {/* What is a tiny win? trigger button */}
-            <button
-              type="button"
-              onClick={() => setIsExplainerOpen(true)}
-              className="text-[#303B34] hover:text-[#47634B] hover:bg-[#DDE8D7]/40 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full font-inter font-normal text-xs sm:text-sm transition-colors cursor-pointer"
-            >
-              What is a tiny win?
-            </button>
-          </nav>
-        </div>
+          {/* What is a tiny win? trigger button (.v3_1602) */}
+          <button
+            type="button"
+            onClick={() => setIsExplainerOpen(true)}
+            className="v3_1602"
+          >
+            What is a tiny win?
+          </button>
+        </nav>
       </header>
 
-      {/* Main Content Area */}
-      <main className="relative z-10 max-w-3xl mx-auto px-4 py-12 sm:py-16 w-full flex-grow">
-        {/* Hero Section */}
-        <div className="text-center mb-10 sm:mb-12 space-y-3.5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-nunito font-bold bg-[#DDE8D7] text-[#47634B] border border-[#47634B]/20 shadow-2xs">
-            <span className="flex h-1.5 w-1.5 rounded-full bg-[#47634B] animate-pulse" />
-            <span>✨ Daily Gratitude Garden</span>
-          </div>
+      {/* Decorative Whimsical Floating Botanical Doodles (.v17_8 & .v17_13) */}
+      <div className="v17_8" aria-hidden="true">
+        <div className="v17_9" />
+        <div className="v17_10" />
+        <div className="v17_11" />
+        <div className="v17_12" />
+      </div>
+      <div className="v17_13" aria-hidden="true">
+        <div className="v17_14" />
+      </div>
 
-          <h1 className="text-4xl sm:text-6xl font-nunito font-black tracking-tight text-[#303B34]">
-            Tiny Wins
-          </h1>
-
+      {/* Main Content Area - Community Board */}
+      <main className="relative z-10 max-w-3xl mx-auto px-4 py-8 sm:py-12 w-full flex-grow">
+        {/* Subtitle / Intro */}
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-[#7C8076] font-nunito text-sm sm:text-base max-w-md mx-auto leading-relaxed">
             A quiet space to celebrate everyday victories. No victory is too small to count.
           </p>
         </div>
 
         {/* Themed Writing Box: Where the tiny win is written */}
-        <section className="bg-[#FFFEFA]/90 backdrop-blur-xl rounded-3xl border border-[#47634B]/15 shadow-[0_12px_40px_rgba(71,99,75,0.06)] hover:shadow-[0_16px_48px_rgba(71,99,75,0.09)] transition-all duration-300 p-6 sm:p-7 mb-12 relative overflow-hidden ring-1 ring-[#47634B]/5">
+        <section className="bg-[#FFFEFA]/95 backdrop-blur-xl rounded-2xl border border-[#47634B]/20 shadow-[0_8px_30px_rgba(71,99,75,0.06)] hover:shadow-[0_12px_36px_rgba(71,99,75,0.09)] transition-all duration-300 p-6 sm:p-7 mb-10 relative overflow-hidden">
           {/* Top aesthetic accent line */}
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#47634B] via-[#DDE8D7] to-[#F4D8C7]" />
 
@@ -236,7 +214,7 @@ export default function Home() {
                   if (errorMessage) setErrorMessage('');
                 }}
                 placeholder="What's your tiny win today? (e.g., 'Finally fixed that bug', 'Drank enough water', 'Took a 15-min walk')"
-                className="w-full resize-none rounded-2xl border border-[#47634B]/20 bg-[#FFFDF9] p-4 text-[#303B34] text-sm sm:text-base placeholder-[#7C8076]/70 focus:outline-none focus:bg-white focus:ring-4 focus:ring-[#47634B]/15 focus:border-[#47634B] transition-all duration-200 disabled:bg-[#F7F1E8] disabled:cursor-not-allowed shadow-inner"
+                className="w-full resize-none rounded-xl border border-[#47634B]/20 bg-[#FFFDF9] p-4 text-[#303B34] text-sm sm:text-base placeholder-[#7C8076]/70 focus:outline-none focus:bg-white focus:ring-4 focus:ring-[#47634B]/15 focus:border-[#47634B] transition-all duration-200 disabled:bg-[#F7F1E8] disabled:cursor-not-allowed shadow-inner"
               />
             </div>
 
@@ -303,7 +281,7 @@ export default function Home() {
         </section>
 
         {/* Celebrations Feed */}
-        <section className="space-y-5">
+        <section className="space-y-4">
           <div className="flex items-center justify-between px-1.5">
             <div className="flex items-center gap-2">
               <h2 className="text-xs font-nunito font-bold uppercase tracking-widest text-[#47634B]">
@@ -321,7 +299,7 @@ export default function Home() {
 
           {/* Loading State */}
           {isLoading && (
-            <div className="text-center py-16 bg-[#FFFEFA]/80 backdrop-blur-md rounded-3xl border border-[#47634B]/15 shadow-xs">
+            <div className="text-center py-16 bg-[#FFFEFA]/80 backdrop-blur-md rounded-2xl border border-[#47634B]/15 shadow-xs">
               <div className="inline-block animate-spin text-[#47634B] text-2xl mb-2">🌱</div>
               <p className="text-sm font-medium text-[#7C8076]">Loading wins...</p>
             </div>
@@ -329,7 +307,7 @@ export default function Home() {
 
           {/* Empty State */}
           {!isLoading && wins.length === 0 && (
-            <div className="text-center py-16 px-4 bg-[#FFFEFA]/80 backdrop-blur-md rounded-3xl border border-dashed border-[#47634B]/30 text-[#7C8076] space-y-3">
+            <div className="text-center py-16 px-4 bg-[#FFFEFA]/80 backdrop-blur-md rounded-2xl border border-dashed border-[#47634B]/30 text-[#7C8076] space-y-3">
               <span className="text-3xl block">🌱</span>
               <p className="text-sm font-nunito font-bold text-[#303B34]">No wins posted yet!</p>
               <p className="text-xs text-[#7C8076] max-w-xs mx-auto leading-relaxed">
@@ -344,7 +322,7 @@ export default function Home() {
               {wins.map((win) => (
                 <article
                   key={win.id}
-                  className="bg-[#FFFEFA]/90 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-[#47634B]/15 shadow-[0_4px_20px_rgba(71,99,75,0.03)] hover:shadow-[0_12px_32px_rgba(71,99,75,0.08)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ring-1 ring-[#47634B]/5"
+                  className="bg-[#FFFEFA]/90 backdrop-blur-md rounded-2xl p-5 border border-[#47634B]/15 shadow-[0_4px_20px_rgba(71,99,75,0.03)] hover:shadow-[0_10px_28px_rgba(71,99,75,0.08)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
                 >
                   {/* Subtle card badge */}
                   <div className="flex items-center justify-between mb-3">
@@ -407,32 +385,29 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Bottom Footer matching ui/index.html & ui/css/main.css (.v3_1736) */}
-      <footer className="relative z-20 w-full backdrop-blur-md bg-[#FFFDF9]/85 border-t border-[#47634B]/10 mt-16 py-6 sm:py-8 shadow-[0_-2px_12px_rgba(71,99,75,0.03)]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          {/* Footer Logo */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md border-[1.7px] border-[#47634B] flex items-center justify-center">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#47634B]" />
-            </div>
-            <span className="font-nunito font-black text-xl text-[#303B34]">Tiny Wins</span>
+      {/* Bottom Footer matching ui/index.html (.v3_1736) */}
+      <footer className="v3_1736">
+        {/* Footer Logo (.v3_1737) */}
+        <div className="v3_1737">
+          <div className="v3_1738">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#47634B]" />
           </div>
-
-          {/* Subtitle */}
-          <p className="font-nunito text-xs sm:text-sm text-[#7C8076]">
-            A kinder corner of the internet. One tiny win at a time.
-          </p>
-
-          {/* Keep it kind button */}
-          <button
-            type="button"
-            onClick={() => setIsKindnessOpen(true)}
-            className="font-inter text-xs font-semibold text-[#47634B] hover:text-[#303B34] hover:underline inline-flex items-center gap-1 transition-colors cursor-pointer"
-          >
-            <span>Keep it kind</span>
-            <span>↗</span>
-          </button>
+          <span className="v3_1739">Tiny Wins</span>
         </div>
+
+        {/* Subtitle (.v3_1740) */}
+        <span className="v3_1740">
+          A kinder corner of the internet. One tiny win at a time.
+        </span>
+
+        {/* Keep it kind button (.v3_1741) */}
+        <button
+          type="button"
+          onClick={() => setIsKindnessOpen(true)}
+          className="v3_1741"
+        >
+          Keep it kind ↗
+        </button>
       </footer>
 
       {/* "What is a tiny win?" Modal */}
