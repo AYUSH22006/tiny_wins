@@ -1,4 +1,5 @@
 import './globals.css';
+import '../ui/css/main.css';
 
 export const metadata = {
   title: 'Tiny Wins - A little space for good',

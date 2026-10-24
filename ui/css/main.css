@@ -6,60 +6,67 @@ body {
 }
 .v3_1593 {
   width: 100%;
-  height: 1320px;
+  min-height: 100vh;
   background: linear-gradient(rgba(255,248,241,1), rgba(247,241,232,1));
   opacity: 1;
   position: relative;
   top: 0px;
   left: 0px;
-  overflow: hidden;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .v10_4 {
   width: 100%;
   height: 100%;
   background: url("../images/v10_4.png");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center top;
   background-size: cover;
   opacity: 0.18000000715255737;
-  position: relative;
+  position: absolute;
   top: 0px;
   left: 0px;
   overflow: hidden;
+  pointer-events: none;
 }
 .v3_1594 {
   width: 100%;
   height: 104px;
   background: rgba(255,253,249,0.800000011920929);
+  backdrop-filter: blur(8px);
   opacity: 1;
   position: relative;
   top: 0px;
   left: 0px;
   overflow: hidden;
+  border-bottom: 1px solid rgba(71,99,75,0.08);
+  z-index: 20;
 }
 .v3_1595 {
   width: 191px;
   height: 41px;
-  background: url("../images/v3_1595.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   margin: 10px;
   opacity: 1;
   position: absolute;
   top: 31px;
   left: 48px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .v3_1596 {
   width: 32px;
   height: 32px;
-  background: url("../images/v3_1596.png");
   opacity: 1;
   position: absolute;
   top: 4px;
   left: 0px;
   border: 1.7000000476837158px solid rgba(71,99,75,1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .v3_1597 {
   width: 149px;
@@ -68,24 +75,23 @@ body {
   top: 0px;
   left: 42px;
   font-family: Nunito;
-  font-weight: Black;
+  font-weight: 900;
   font-size: 30px;
+  line-height: 1;
   opacity: 1;
   text-align: left;
+  margin: 0;
 }
 .v3_1598 {
-  width: 310px;
   height: 38px;
-  background: url("../images/v3_1598.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   margin: 32px;
   opacity: 1;
   position: absolute;
   top: 33px;
   left: 574px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 .v3_1599 {
   width: 163px;
@@ -97,94 +103,81 @@ body {
   position: relative;
   top: 0px;
   left: 0px;
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
+  border-radius: 100px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 .v3_1600 {
   width: 6px;
   height: 6px;
   background: rgba(71,99,75,1);
   opacity: 1;
-  position: absolute;
-  top: 16px;
-  left: 18px;
   border-radius: 50%;
 }
 .v3_1601 {
-  width: 113px;
   color: rgba(71,99,75,1);
-  position: absolute;
-  top: 11px;
-  left: 32px;
   font-family: Inter;
-  font-weight: Semi Bold;
+  font-weight: 600;
   font-size: 13px;
   opacity: 1;
   text-align: left;
+  white-space: nowrap;
 }
 .v3_1602 {
-  width: 115px;
   color: rgba(48,59,52,1);
-  position: absolute;
-  top: 11px;
-  left: 99px;
   font-family: Inter;
-  font-weight: Regular;
+  font-weight: 400;
   font-size: 13px;
   opacity: 1;
   text-align: left;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.v3_1602:hover {
+  color: rgba(71,99,75,1);
 }
 .v3_1603 {
-  width: 173px;
-  height: 19px;
-  background: url("../images/v3_1603.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  height: 24px;
   margin: 8px;
   opacity: 1;
   position: absolute;
   top: 42px;
   left: 223px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .v3_1743 {
   width: 16px;
   height: 16px;
-  background: url("../images/v3_1743.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   opacity: 1;
-  position: absolute;
-  top: 1px;
-  left: 0px;
-  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .v3_1744 {
   width: 13px;
   height: 11px;
-  background: url("../images/v3_1744.png");
   opacity: 1;
-  position: absolute;
-  top: 2px;
-  left: 2px;
   border: 1.7000000476837158px solid rgba(71,99,75,1);
+  border-radius: 2px;
 }
 .v3_1605 {
-  width: 149px;
   color: rgba(71,99,75,1);
-  position: absolute;
-  top: 0px;
-  left: 24px;
   font-family: Nunito;
-  font-weight: Bold;
+  font-weight: 700;
   font-size: 14px;
   opacity: 1;
   text-align: left;
+  margin-left: 8px;
+  white-space: nowrap;
 }
 .name {
   color: #fff;
@@ -192,91 +185,77 @@ body {
 .v3_1736 {
   width: 100%;
   height: 100px;
-  background: url("../images/v3_1736.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background: rgba(255,253,249,0.85);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(71,99,75,0.1);
   opacity: 1;
-  position: absolute;
-  top: 1422px;
-  left: 0px;
-  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 20;
 }
 .v3_1737 {
-  width: 144px;
   height: 30px;
-  background: url("../images/v3_1737.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   margin: 10px;
   opacity: 1;
-  position: absolute;
-  top: 35px;
-  left: 48px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .v3_1738 {
   width: 24px;
   height: 24px;
-  background: url("../images/v3_1738.png");
   opacity: 1;
-  position: absolute;
-  top: 3px;
-  left: 0px;
   border: 1.7000000476837158px solid rgba(71,99,75,1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .v3_1739 {
-  width: 110px;
   color: rgba(48,59,52,1);
-  position: absolute;
-  top: 0px;
-  left: 34px;
   font-family: Nunito;
-  font-weight: Black;
+  font-weight: 900;
   font-size: 22px;
   opacity: 1;
   text-align: left;
 }
 .v3_1740 {
-  width: 337px;
   color: rgba(124,128,118,1);
-  position: absolute;
-  top: 40px;
-  left: 583px;
   font-family: Nunito;
-  font-weight: Regular;
+  font-weight: 400;
   font-size: 14px;
   opacity: 1;
-  text-align: left;
+  text-align: center;
 }
 .v3_1741 {
-  width: 82px;
   color: rgba(71,99,75,1);
-  position: absolute;
-  top: 43px;
-  left: 1310px;
   font-family: Inter;
-  font-weight: Regular;
+  font-weight: 400;
   font-size: 12px;
   opacity: 1;
-  text-align: left;
+  text-align: right;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.2s;
 }
-.name {
-  color: #fff;
+.v3_1741:hover {
+  color: rgba(48,59,52,1);
+  text-decoration: underline;
 }
 .v17_8 {
   width: 24px;
   height: 24px;
-  background: url("../images/v17_8.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   opacity: 1;
   position: absolute;
   top: 560px;
   left: 1222px;
-  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
 }
 .v17_9 {
   width: 16px;
@@ -321,24 +300,48 @@ body {
 .v17_13 {
   width: 18px;
   height: 18px;
-  background: url("../images/v17_13.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   opacity: 1;
   position: absolute;
   top: 528px;
   left: 66px;
   transform: rotate(-10deg);
-  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
 }
 .v17_14 {
   width: 16px;
   height: 16px;
-  background: url("../images/v17_14.png");
   opacity: 1;
   position: absolute;
   top: 0px;
   left: 2px;
   border: 1.7000000476837158px solid rgba(71,99,75,1);
+  border-radius: 3px;
+}
+
+@media (max-width: 1024px) {
+  .v3_1594 {
+    height: auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .v3_1595, .v3_1603, .v3_1598 {
+    position: static;
+    margin: 0;
+  }
+  .v3_1736 {
+    height: auto;
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  .v17_8 {
+    right: 24px;
+    left: auto;
+  }
 }
