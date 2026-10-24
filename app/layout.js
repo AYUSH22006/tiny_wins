@@ -1,14 +1,14 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Tiny Wins - Celebrate Everyday Victories',
-  description: 'A minimalist public gratitude board to share and celebrate small daily wins.',
+  title: 'Tiny Wins - A little space for good',
+  description: 'A kinder corner of the internet. Celebrate everyday victories, one tiny win at a time.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="antialiased selection:bg-forest-200 selection:text-forest-900">{children}</body>
     </html>
   );
 }
